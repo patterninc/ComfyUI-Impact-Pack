@@ -230,7 +230,7 @@ def enhance_detail(image, model, clip, vae, guide_size, guide_size_for_bbox, max
         noise_mask = noise_mask.squeeze(3)
 
         if noise_mask_feather > 0:
-            model = nodes_differential_diffusion.DifferentialDiffusion().apply(model)[0]
+            model = nodes_differential_diffusion.DifferentialDiffusion.execute(model)[0]
 
     if wildcard_opt is not None and wildcard_opt != "":
         model, _, wildcard_positive = wildcards.process_with_loras(wildcard_opt, model, clip)
@@ -342,7 +342,7 @@ def enhance_detail(image, model, clip, vae, guide_size, guide_size_for_bbox, max
         # try to decode image normally
         refined_image = vae.decode(refined_latent['samples'])
     except Exception as e:
-        #usually an out-of-memory exception from the decode, so try a tiled approach
+        # usually an out-of-memory exception from the decode, so try a tiled approach
         refined_image = vae.decode_tiled(refined_latent["samples"], tile_x=64, tile_y=64, )
 
     if detailer_hook is not None:
@@ -371,7 +371,7 @@ def enhance_detail_for_animatediff(image_frames, model, clip, vae, guide_size, g
         noise_mask = noise_mask.squeeze(3)
 
     if noise_mask_feather > 0:
-        model = nodes_differential_diffusion.DifferentialDiffusion().apply(model)[0]
+        model = nodes_differential_diffusion.DifferentialDiffusion.execute(model)[0]
 
     if wildcard_opt is not None and wildcard_opt != "":
         model, _, wildcard_positive = wildcards.process_with_loras(wildcard_opt, model, clip)
