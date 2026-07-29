@@ -1,0 +1,17 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: comfyui-impact-pack
+  description: 'A Onboard an Existing Repo to Backstage created via Backstage'
+  annotations:
+    repo: patterninc/ComfyUI-Impact-Pack
+  labels:
+    CostCenter: AIPLATFORM
+    Environment: stage
+    Name: comfyui-impact-pack
+    Owner: ai-infra-comms
+    Department: AIPLATFORM
+    CreatedBy: Backstage
+spec:
+  type: service
+  system: aiplatform
