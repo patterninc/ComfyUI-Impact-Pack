@@ -6,11 +6,11 @@ metadata:
   annotations:
     repo: patterninc/ComfyUI-Impact-Pack
   labels:
-    CostCenter: AIPLATFORM
+    CostCenter: AI
     Environment: stage
     Name: comfyui-impact-pack
     Owner: ai-infra-comms
-    Department: AIPLATFORM
+    Department: AI
     CreatedBy: Backstage
 spec:
   type: service
